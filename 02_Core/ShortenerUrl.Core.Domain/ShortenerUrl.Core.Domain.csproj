@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Zamin.Core.Domain" Version="6.4.0-beta.2" />
+    <PackageReference Include="Zamin.Core.Domain.Toolkits" Version="6.4.0-beta.2" />
+  </ItemGroup>
+
 </Project>

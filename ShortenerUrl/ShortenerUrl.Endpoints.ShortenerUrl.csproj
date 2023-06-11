@@ -6,4 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\Shortener\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Zamin.EndPoints.Web" Version="6.4.0-beta.2" />
+  </ItemGroup>
+
 </Project>
