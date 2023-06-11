@@ -11,7 +11,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.16">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Zamin.EndPoints.Web" Version="6.4.0-beta.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\02_Core\ShortenerUrl.Core.ApplicationService\ShortenerUrl.Core.ApplicationService.csproj" />
+    <ProjectReference Include="..\02_Core\ShortenerUrl.Core.Contracts\ShortenerUrl.Core.Contracts.csproj" />
+    <ProjectReference Include="..\02_Core\ShortenerUrl.Core.Domain\ShortenerUrl.Core.Domain.csproj" />
+    <ProjectReference Include="..\03_Infra\Data\ShortenerUrl.Infra.Data.Sql.Command\ShortenerUrl.Infra.Data.Sql.Command.csproj" />
+    <ProjectReference Include="..\03_Infra\Data\ShortenerUrl.Infra.Data.Sql.Query\ShortenerUrl.Infra.Data.Sql.Query.csproj" />
   </ItemGroup>
 
 </Project>

@@ -10,4 +10,9 @@
     <PackageReference Include="Zamin.Infra.Data.Sql.Commands" Version="6.4.0-beta.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\02_Core\ShortenerUrl.Core.Contracts\ShortenerUrl.Core.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\02_Core\ShortenerUrl.Core.Domain\ShortenerUrl.Core.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
