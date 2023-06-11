@@ -11,8 +11,4 @@
     <PackageReference Include="Zamin.Core.Domain.Toolkits" Version="6.4.0-beta.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ShortenerUrl\Events\" />
-  </ItemGroup>
-
 </Project>

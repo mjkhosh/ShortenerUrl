@@ -15,4 +15,8 @@
     <ProjectReference Include="..\ShortenerUrl.Core.Domain\ShortenerUrl.Core.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ShortenerUrl\Queries\" />
+  </ItemGroup>
+
 </Project>
