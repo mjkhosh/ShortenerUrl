@@ -8,14 +8,13 @@ using Zamin.Core.Domain.Entities;
 
 namespace ShortenerUrl.Core.Domain.ShortenerUrl.Entities
 {
-    public class ShortenerUrl : AggregateRoot
+    public class ShortUrl : AggregateRoot
     {
         public ShUrl Url { get; set; }
-        public ShGeneratedCode shGeneratedCode { get; set; }
-        public ShortenerUrl()
+        public ShortUrl()
         {
         }
-        public ShortenerUrl(ShUrl url)
+        public ShortUrl(ShUrl url)
         {
             Url = url;
         }
