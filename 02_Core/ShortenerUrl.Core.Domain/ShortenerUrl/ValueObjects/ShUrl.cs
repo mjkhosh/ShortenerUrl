@@ -12,7 +12,7 @@ namespace ShortenerUrl.Core.Domain.ShortenerUrl.ValueObjects
     {
         #region Const Field
         private const int MaxValueLengh = 190_000;
-        private const int MinValueLengh = 13;
+        private const int MinValueLengh = 5;
         #endregion
         #region properties
         public string value { get; private set; }
@@ -20,17 +20,14 @@ namespace ShortenerUrl.Core.Domain.ShortenerUrl.ValueObjects
 
         #region Constructor
 
-        public ShUrl(string value)
+        public ShUrl(string Value)
         {
-            if (string.IsNullOrWhiteSpace(value)) throw new InvalidValueObjectStateException("مقدار فیلد اجباری می باشد.", nameof(ShUrl));
-            if (value.Length > MaxValueLengh) throw new InvalidValueObjectStateException($"تعداد کاراکتر فیلد بیشتر از{MaxValueLengh.ToString()} می باشد.", nameof(ShUrl));
-            if (value.Length < MinValueLengh) throw new InvalidValueObjectStateException($"تعداد کاراکتر فیلد کمتر از{MinValueLengh.ToString()} می باشد.", nameof(ShUrl));
-
+            if (string.IsNullOrWhiteSpace(Value)) throw new InvalidValueObjectStateException("مقدار فیلد اجباری می باشد.", nameof(ShUrl));
+            if (Value.Length > MaxValueLengh) throw new InvalidValueObjectStateException($"تعداد کاراکتر فیلد بیشتر از{MaxValueLengh.ToString()} می باشد.", nameof(ShUrl));
+            if (Value.Length < MinValueLengh) throw new InvalidValueObjectStateException($"تعداد کاراکتر فیلد کمتر از{MinValueLengh.ToString()} می باشد.", nameof(ShUrl));
+            value = Value;
         }
-        public ShUrl()
-        {
-
-        }
+       
         #endregion
        
         #region overLoading

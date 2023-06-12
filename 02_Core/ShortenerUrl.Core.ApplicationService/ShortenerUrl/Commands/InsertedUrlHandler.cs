@@ -25,14 +25,17 @@ namespace ShortenerUrl.Core.ApplicationService.ShortenerUrl.Commands
         {
             try
             {
-                await _repository.InsertAsync(new(request.Url));
+                ShortUrl shortUrl = new(new(request.Url));
+                await _repository.InsertAsync(shortUrl);
                 await _repository.CommitAsync();
+                AddMessage($"کد جنریت شده به شرح روبرو می باشد{shortUrl.Id}:");
                 return Ok();
             }
-            catch (Exception)
+            catch (Exception )
             {
-
-                throw;
+                AddMessage($"خطایی رخ داده است");
+                result.Status = Zamin.Core.Contracts.ApplicationServices.Common.ApplicationServiceStatus.Exception;
+                return Ok();
             }
 
         }

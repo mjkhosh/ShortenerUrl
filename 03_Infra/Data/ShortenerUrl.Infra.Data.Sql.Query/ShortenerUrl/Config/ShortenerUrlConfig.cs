@@ -15,6 +15,7 @@ namespace ShortenerUrl.Infra.Data.Sql.Query.ShortenerUrl.Config
         public void Configure(EntityTypeBuilder<ShortUrl> builder)
         {
             builder.Property(x => x.Url).HasConversion<UrlConversion>();
+            
         }
     }
 }

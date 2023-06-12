@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Zamin.Core.Domain.Toolkits.ValueObjects;
 using Zamin.Core.Domain.ValueObjects;
 using Zamin.Infra.Data.Sql.Commands;
+using Zamin.Infra.Data.Sql.Commands.OutBoxEventItems;
 using Zamin.Infra.Data.Sql.Commands.ValueConversions;
 
 namespace ShortenerUrl.Infra.Data.Sql.Command.Common
@@ -15,6 +16,11 @@ namespace ShortenerUrl.Infra.Data.Sql.Command.Common
     public class ShortenerUrlSqlCommandDbContext : BaseCommandDbContext
     {
         public DbSet<ShortUrl> ShortUrl { get; set; }
+        public DbSet<OutBoxEventItem> OutBoxEventItems
+        {
+            get;
+            set;
+        }
         public ShortenerUrlSqlCommandDbContext(DbContextOptions<ShortenerUrlSqlCommandDbContext> options) : base(options)
         {
 
