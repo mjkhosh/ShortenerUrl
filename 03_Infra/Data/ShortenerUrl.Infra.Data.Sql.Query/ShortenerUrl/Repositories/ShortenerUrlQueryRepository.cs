@@ -21,7 +21,7 @@ namespace ShortenerUrl.Infra.Data.Sql.Command.ShortenerUrl.Repositories
             {
                 CommandResult<UrlResultModel> commandResult = new();
 
-                var result = _dbContext.ShortUrl.Where(x => x.Id == getUrlModel.GeneratedCode).First();
+                var result = _dbContext.ShortUrl.Where(x => x.Id == getUrlModel.GeneratedCode).SingleOrDefault();
 
                 if (result == null)
                 {
