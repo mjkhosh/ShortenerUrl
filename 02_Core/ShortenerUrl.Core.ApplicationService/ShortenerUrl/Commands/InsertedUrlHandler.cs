@@ -1,4 +1,7 @@
-﻿using ShortenerUrl.Core.Contracts.ShortenerUrl.Commands.InsertedUrl;
+﻿using ShortenerUrl.Core.Contracts.Interfaces.DAL;
+using ShortenerUrl.Core.Contracts.ShortenerUrl.Commands.InsertedUrl;
+using ShortenerUrl.Core.Domain.ShortenerUrl.Entities;
+using ShortenerUrl.Core.Domain.ShortenerUrl.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,14 +15,26 @@ namespace ShortenerUrl.Core.ApplicationService.ShortenerUrl.Commands
 {
     public class InsertedUrlHandler : CommandHandler<InsertedUrl>
     {
-        public InsertedUrlHandler(ZaminServices zaminServices) : base(zaminServices)
+        private readonly IShortenerUrlCommandRepository _repository;
+        public InsertedUrlHandler(ZaminServices zaminServices, IShortenerUrlCommandRepository repository) : base(zaminServices)
         {
-
+            _repository = repository;
         }
 
         public override async Task<CommandResult> Handle(InsertedUrl request)
         {
-            return Ok();
+            try
+            {
+                await _repository.InsertAsync(new(request.Url));
+                await _repository.CommitAsync();
+                return Ok();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
     }
 }

@@ -23,8 +23,8 @@ namespace ShortenerUrl.Core.Domain.ShortenerUrl.ValueObjects
         public ShUrl(string value)
         {
             if (string.IsNullOrWhiteSpace(value)) throw new InvalidValueObjectStateException("مقدار فیلد اجباری می باشد.", nameof(ShUrl));
-            if (value.Length > MaxValueLengh) throw new InvalidValueObjectStateException("تعداد کاراکتر فیلد بیشتر از{0} می باشد.", MaxValueLengh.ToString(), nameof(ShUrl));
-            if (value.Length < MinValueLengh) throw new InvalidValueObjectStateException("تعداد کاراکتر فیلد کمتر از{0} می باشد.", MaxValueLengh.ToString(), nameof(ShUrl));
+            if (value.Length > MaxValueLengh) throw new InvalidValueObjectStateException($"تعداد کاراکتر فیلد بیشتر از{MaxValueLengh.ToString()} می باشد.", nameof(ShUrl));
+            if (value.Length < MinValueLengh) throw new InvalidValueObjectStateException($"تعداد کاراکتر فیلد کمتر از{MinValueLengh.ToString()} می باشد.", nameof(ShUrl));
 
         }
         public ShUrl()
@@ -32,10 +32,7 @@ namespace ShortenerUrl.Core.Domain.ShortenerUrl.ValueObjects
 
         }
         #endregion
-        protected override IEnumerable<object> GetEqualityComponents()
-        {
-            yield return value;
-        }
+       
         #region overLoading
         public static implicit operator ShUrl(string value) => new(value);
         public static explicit operator string(ShUrl shUrl) => shUrl.value;
@@ -44,6 +41,13 @@ namespace ShortenerUrl.Core.Domain.ShortenerUrl.ValueObjects
 
         public static ShUrl FromString(string value) => new ShUrl(value);
         override public string ToString() => value;
+
+    
+
+        protected override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return value;
+        }
         #endregion
     }
 }

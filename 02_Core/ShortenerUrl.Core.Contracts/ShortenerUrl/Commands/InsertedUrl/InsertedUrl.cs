@@ -9,7 +9,6 @@ namespace ShortenerUrl.Core.Contracts.ShortenerUrl.Commands.InsertedUrl
 {
     public class InsertedUrl:ICommand
     {
-        public int Id { get; set; }
         public string Url { get; set; }
     }
 }

@@ -11,19 +11,18 @@ namespace ShortenerUrl.Core.Domain.ShortenerUrl.Entities
 {
     public class ShortUrl : AggregateRoot
     {
-        public ShUrl Url { get; set; }
-        public ShortUrl()
-        {
-        }
+        public ShUrl Url { get; private set; }
+       
         public ShortUrl(ShUrl url)
         {
-            Url = url;
+            InsertUrl(url);
         }
-        public void InsertUrl(ShortUrl url)
+        public void InsertUrl(ShUrl url)
         {
 
-            Url = Url;
-            AddEvent(new ShortenerUrlInserted(BusinessId.Value, Url.value));
+            Url = url;
+            AddEvent(new ShortenerUrlInserted(BusinessId.Value, url.value));
         }
+      
     }
 }

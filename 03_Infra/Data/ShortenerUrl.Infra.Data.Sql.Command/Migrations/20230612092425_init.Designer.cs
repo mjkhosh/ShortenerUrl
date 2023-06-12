@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShortenerUrl.Infra.Data.Sql.Command.Common;
 
@@ -11,9 +12,10 @@ using ShortenerUrl.Infra.Data.Sql.Command.Common;
 namespace ShortenerUrl.Infra.Data.Sql.Command.Migrations
 {
     [DbContext(typeof(ShortenerUrlSqlCommandDbContext))]
-    partial class ShortenerUrlSqlCommandDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230612092425_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -1,13 +1,30 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ShortenerUrl.Infra.Data.Sql.Command.Common;
-using ShortenerUrl.Infra.Data.Sql.Query.Common;
+﻿using Serilog;
+using ShortenerUrl.Endpoints.ShortenerUrl.ServiceConfiguration;
 
-var builder = WebApplication.CreateBuilder(args);
-ConfigurationManager Configuration = builder.Configuration;
-builder.Services.AddDbContext<ShortenerUrlSqlCommandDbContext>(c => c.UseSqlServer(Configuration.GetConnectionString("ShortenerUrlSqlCommand")));
-builder.Services.AddDbContext<ShortenerUrlSqlQueryDbContext>(c => c.UseSqlServer(Configuration.GetConnectionString("ShortenerUrlSqlQuery")));
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .CreateBootstrapLogger();
+Log.Information("Starting up");
 
-var app = builder.Build();
+try
+{
+    var builder = WebApplication.CreateBuilder(args);
 
+    builder.Host.UseSerilog((ctx, lc) => lc
+    .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}")
+    .Enrich.FromLogContext()
+    .ReadFrom.Configuration(ctx.Configuration));
 
-app.Run();
+    var app = builder.ConfigureServices().ConfigurePipeline();
+
+    app.Run();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Unhandled exception");
+}
+finally
+{
+    Log.Information("Shut down complete");
+    Log.CloseAndFlush();
+}
