@@ -29,7 +29,7 @@ namespace ShortenerUrl.Endpoints.ShortenerUrl.Controllers.Shortener
             if (result.Status == Zamin.Core.Contracts.ApplicationServices.Common.ApplicationServiceStatus.Ok) {
                 return Redirect(result.Data.Data.Url);
             }
-            return Redirect(result.Data.Data.Url);
+            return Redirect("");
         }
     }
 }

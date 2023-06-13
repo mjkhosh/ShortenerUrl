@@ -62,7 +62,13 @@ namespace ShortenerUrl.Endpoints.ShortenerUrl.ServiceConfiguration
                     return version.Any(v => $"v{v.ToString()}" == doc);
                 });
             });
-
+            builder.Services.AddCors(o => o.AddPolicy("AllowAnyOrigin",
+                builder =>
+                {
+                    builder.AllowAnyOrigin()
+                                 .AllowAnyMethod()
+                                 .AllowAnyHeader();
+                }));
             return builder.Build();
         }
         public static WebApplication ConfigurePipeline(this WebApplication app)
@@ -78,7 +84,7 @@ namespace ShortenerUrl.Endpoints.ShortenerUrl.ServiceConfiguration
             app.UseHttpsRedirection();
             app.UseAuthorization();
             app.MapControllers();
-
+            app.UseCors("AllowAnyOrigin");
 
             return app;
         }
