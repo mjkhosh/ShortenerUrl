@@ -23,13 +23,13 @@ namespace ShortenerUrl.Endpoints.ShortenerUrl.Controllers.Shortener
             return await CommandDispatcher.Send<InsertedUrl>(insertedUrl);
         }
         [HttpPost("RedirectUrl")]
-        public async Task<IActionResult> RedirectUrl(GetUrlModel Generatedcode)
+        public async Task<RedirectResult> RedirectUrl(GetUrlModel Generatedcode)
         {
             var result = await QueryDispatcher.Execute<GetUrlModel, CommandResult<UrlResultModel>>(Generatedcode);
             if (result.Status == Zamin.Core.Contracts.ApplicationServices.Common.ApplicationServiceStatus.Ok) {
                 return Redirect(result.Data.Data.Url);
             }
-            return BadRequest(result.Data);
+            return Redirect(result.Data.Data.Url);
         }
     }
 }

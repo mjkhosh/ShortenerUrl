@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Zamin.Core.Domain.Exceptions;
 using Zamin.Core.Domain.ValueObjects;
@@ -22,9 +23,13 @@ namespace ShortenerUrl.Core.Domain.ShortenerUrl.ValueObjects
 
         public ShUrl(string Value)
         {
+
             if (string.IsNullOrWhiteSpace(Value)) throw new InvalidValueObjectStateException("مقدار فیلد اجباری می باشد.", nameof(ShUrl));
+
             if (Value.Length > MaxValueLengh) throw new InvalidValueObjectStateException($"تعداد کاراکتر فیلد بیشتر از{MaxValueLengh.ToString()} می باشد.", nameof(ShUrl));
             if (Value.Length < MinValueLengh) throw new InvalidValueObjectStateException($"تعداد کاراکتر فیلد کمتر از{MinValueLengh.ToString()} می باشد.", nameof(ShUrl));
+            if (!Regex.IsMatch(Value, @"^http(s)?://([\w-]+.)+[\w-]+(/[\w- ./?%&=])?$")) throw new InvalidValueObjectStateException($"لینک صحیح نمی باشد", nameof(ShUrl));
+
             value = Value;
         }
        
