@@ -1,0 +1,22 @@
+{
+  "profiles": {
+    "ShortenerUrl.Endpoints.ShortenerUrl": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:50557;http://localhost:50558"
+    },
+    "WSL": {
+      "commandName": "WSL2",
+      "launchBrowser": true,
+      "launchUrl": "https://localhost:50557",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "https://localhost:50557;http://localhost:50558"
+      },
+      "distributionName": ""
+    }
+  }
+}

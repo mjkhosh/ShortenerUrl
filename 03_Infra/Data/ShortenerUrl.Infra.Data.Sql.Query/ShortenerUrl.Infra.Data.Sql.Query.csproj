@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+	  <PackageReference Include="Zamin.Infra.Data.Sql.Queries" Version="6.3.0-beta.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\02_Core\ShortenerUrl.Core.Contracts\ShortenerUrl.Core.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\02_Core\ShortenerUrl.Core.Domain\ShortenerUrl.Core.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
